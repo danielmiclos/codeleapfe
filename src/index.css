@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  :root {
+    font-family: "Roboto", system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    --main-background: 221 221 221;
+    --surface: 255 255 255;
+
+    --text-primary: 0 0 0;
+    --text-muted: 119 119 119;
+    --text-secondary: 255 255 255;
+    --bg-blue: 118 149 236;
+    --grey: 153 153 153;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: rgb(var(--main-background));
+  }
+}
