@@ -7,7 +7,7 @@ export default function Header() {
                 <h1 className="text-secondary font-semibold text-[1.375rem] ">CodeLeap Network</h1>
 
             </div>
-            <div><button>dark</button></div>
+
         </header>
     )
 }

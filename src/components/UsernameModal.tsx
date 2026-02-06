@@ -45,8 +45,8 @@ function UsernameModal({ onSubmit }: Props) {
                         <input
                             id="username"
                             value={value}
-                            onChange={(e) => setValue(e.target.value)}
-                            placeholder="John doe"
+                            onChange={(e) => setValue(e.target.value.replace(/\s/g, ""))}
+                            placeholder="JohnDoe"
                             className="border border-customgrey text-sm rounded-lg py-2 px-3"
                             autoFocus
                         />
