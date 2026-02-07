@@ -58,6 +58,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-bg text-primary">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:bg-customblue focus:text-secondary focus:px-4 focus:py-2 focus:rounded"
+      >
+        Skip to main content
+      </a>
+
       <AnimatePresence>
         {!currentUsername && (
           <UsernameModal onSubmit={(username) => setCurrentUsername(username)} />
@@ -67,8 +74,16 @@ function App() {
       {currentUsername && (
         <div className="min-h-screen bg-surface max-w-3xl mx-auto flex flex-col">
           <Header />
-          <main className="flex flex-col p-6 gap-6">
+          <main id="main-content" className="flex flex-col p-6 gap-6">
             <PortForm mode="create" username={currentUsername} onCreated={() => refetch()} />
+
+            {/* Live region for screen readers */}
+            <div aria-live="polite" aria-atomic="true" className="sr-only">
+              {isLoading && "Loading posts..."}
+              {isError && `Error loading posts: ${(error as Error).message}`}
+              {!isLoading && !isError && posts.length === 0 && "No posts yet."}
+              {!isLoading && !isError && posts.length > 0 && `${posts.length} posts loaded.`}
+            </div>
 
             <AnimatePresence mode="wait">
               {isLoading && (
